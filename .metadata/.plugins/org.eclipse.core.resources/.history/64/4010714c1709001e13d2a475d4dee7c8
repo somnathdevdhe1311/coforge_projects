@@ -1,0 +1,18 @@
+package com.santander.coforge.postcode.dto;
+
+public class Codes {
+
+	public String admin_district;
+    public String admin_county;
+    public String admin_ward;
+    public String parish;
+    public String parliamentary_constituency;
+    public String ccg;
+    public String ccg_id;
+    public String ced;
+    public String nuts;
+    public String lsoa;
+    public String msoa;
+    public String lau2;
+    public String pfa;
+}

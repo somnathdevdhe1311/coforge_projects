@@ -1,0 +1,5 @@
+package com.santander.coforge.bitcoin.model;
+
+public class CurrencyRequest {
+
+}

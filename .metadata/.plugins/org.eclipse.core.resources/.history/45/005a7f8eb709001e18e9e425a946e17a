@@ -1,0 +1,10 @@
+package com.santander.coforge.postcode.dto;
+
+public class Results {
+
+	private String sunset;
+	
+	private String sunrise;
+	
+	
+}

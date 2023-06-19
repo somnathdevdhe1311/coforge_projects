@@ -1,0 +1,26 @@
+package com.santander.coforge.postcode.dto;
+
+
+public class ResponseDto {
+
+	 public int status;
+	 public Result result;
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public Result getResult() {
+		return result;
+	}
+	public void setResult(Result result) {
+		this.result = result;
+	}
+	@Override
+	public String toString() {
+		return "ResponseDto [status=" + status + ", result=" + result + "]";
+	}
+		
+	
+}

@@ -1,0 +1,5 @@
+package com.santander.coforge.bitcoin.repo;
+
+public interface BitcoinRepo {
+
+}

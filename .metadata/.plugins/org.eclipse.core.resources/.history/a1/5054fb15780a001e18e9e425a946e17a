@@ -1,0 +1,20 @@
+package com.santander.coforge.bitcoin.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Currencies {
+
+	private String code;
+	private String symbol;
+	private float rate;
+	private String description;
+	private float rate_float;
+    
+}

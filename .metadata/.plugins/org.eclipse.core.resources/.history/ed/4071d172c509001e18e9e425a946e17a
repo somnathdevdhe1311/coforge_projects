@@ -1,0 +1,13 @@
+package com.santander.coforge.postcode.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.santander.coforge.postcode.model.PostcodeDetails;
+
+@Repository
+public interface PostcodeRepo extends JpaRepository<PostcodeDetails, Integer>{
+
+	PostcodeDetails findByName(String name);
+
+}

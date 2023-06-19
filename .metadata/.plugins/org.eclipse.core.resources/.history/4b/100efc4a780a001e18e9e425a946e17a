@@ -1,0 +1,18 @@
+package com.santander.coforge.bitcoin.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.santander.coforge.bitcoin.dto.BitcoinResponse;
+import com.santander.coforge.bitcoin.model.CurrencyRequest;
+
+@RestController
+public class BitcoinController {
+
+	
+	public BitcoinResponse getBitcoinDetails() {
+		
+		CurrencyRequest currencyRequest = new CurrencyRequest();
+		
+		return null;
+	}
+}

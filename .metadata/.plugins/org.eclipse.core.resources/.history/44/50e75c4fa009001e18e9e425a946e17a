@@ -1,0 +1,9 @@
+package com.santander.coforge.postcode.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.santander.coforge.postcode.model.PostcodeDetails;
+
+public interface PostcodeRepo extends JpaRepository<PostcodeDetails, Integer>{
+
+}

@@ -1,0 +1,9 @@
+package com.santander.coforge.postcode.dto;
+
+import jakarta.persistence.Entity;
+
+public class RequestDto {
+	
+	private String postcodes;
+	
+}

@@ -1,0 +1,33 @@
+package com.santander.coforge.postcode.dto;
+
+import java.util.List;
+
+public class SunriseSunsetResponseDto {
+
+	
+	private List<Result> results;
+
+	public List<Result> getResult() {
+		return results;
+	}
+
+	public void setResult(List<Result> results) {
+		this.results = results;
+	}
+
+	public SunriseSunsetResponseDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SunriseSunsetResponseDto(List<Result> results) {
+		super();
+		this.results = results;
+	}
+
+	@Override
+	public String toString() {
+		return "SunriseSunsetResponseDto [result=" + results + "]";
+	}
+	
+}

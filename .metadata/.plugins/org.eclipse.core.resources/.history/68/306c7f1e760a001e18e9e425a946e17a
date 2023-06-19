@@ -1,0 +1,6 @@
+package com.santander.coforge.bitcoin.dto;
+
+public class BitcoinResponse {
+
+	 private Bpi bpi;
+}

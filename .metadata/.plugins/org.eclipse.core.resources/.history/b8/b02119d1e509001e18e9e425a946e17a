@@ -1,0 +1,22 @@
+package com.santander.coforge.sample;
+
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.santander.coforge.sample.repository.ProductRepo;
+import com.santander.coforge.sample.service.ProductService;
+
+@SpringBootTest()
+public class SantanderServiceTests {
+	
+	
+	@Mock
+	private ProductRepo productRepo;
+	
+	@InjectMocks
+	private ProductService productService;
+	
+	
+
+}

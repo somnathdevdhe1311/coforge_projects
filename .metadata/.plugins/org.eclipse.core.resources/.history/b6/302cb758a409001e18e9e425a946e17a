@@ -1,0 +1,33 @@
+package com.santander.coforge.postcode.controller;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.santander.coforge.postcode.dto.ResponseDto;
+import com.santander.coforge.postcode.service.PostcodeService;
+
+@RestController
+@RequestMapping("/postCodes")
+public class PostCodeController {
+
+	
+	@Autowired
+	private PostcodeService postcodeService;
+	
+
+	@GetMapping("/{code}")
+	public ResponseDto getPostcodeDetails(@PathVariable String name, @PathVariable String code){
+		
+		ResponseDto responseDto = postcodeService.getPostcodeDetails(name,code);
+
+		return responseDto;
+	}
+	
+	
+	
+}

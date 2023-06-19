@@ -1,0 +1,32 @@
+package com.santander.coforge.postcode.dto;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentTimeExample {
+
+	public static void main(String[] args) {
+		// Get the current time in the UK timezone
+
+		ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("Europe/London"));
+
+		 
+
+		// Define the desired date-time format
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssxxx");
+
+		 
+
+		// Format the current time using the formatter
+
+		String formattedTime = currentTime.format(formatter);
+
+		 
+
+		// Print the formatted current time
+
+		System.out.println(formattedTime);
+    }
+}

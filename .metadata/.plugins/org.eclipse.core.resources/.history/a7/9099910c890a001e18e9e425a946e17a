@@ -1,0 +1,12 @@
+package com.santander.coforge.bitcoin.client;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.santander.coforge.bitcoin.dto.BitcoinResponse;
+
+@org.springframework.cloud.openfeign.FeignClient(url="http://localhost:8080/currency/getAllCurrencies", name="CURRENCY-CLIENT")
+public interface FeignClient {
+
+	@GetMapping("/getAllCurrencies")
+	public BitcoinResponse getBitcoinDetails();
+}

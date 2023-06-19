@@ -1,0 +1,48 @@
+package com.santander.coforge.postcode.dto;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class SunriseSunsetResponseDto {
+
+	
+	private List<Results> results;
+	
+	private String status;
+
+	public List<Results> getResults() {
+		return results;
+	}
+
+	public void setResults(List<Results> results) {
+		this.results = results;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "SunriseSunsetResponseDto [results=" + results + ", status=" + status + "]";
+	}
+
+	public SunriseSunsetResponseDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SunriseSunsetResponseDto(List<Results> results, String status) {
+		super();
+		this.results = results;
+		this.status = status;
+	}
+
+	
+}

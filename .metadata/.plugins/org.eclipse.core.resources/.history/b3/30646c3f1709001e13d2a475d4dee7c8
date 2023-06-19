@@ -1,0 +1,31 @@
+package com.santander.coforge.postcode.dto;
+
+public class Result {
+
+	public String postcode;
+    public int quality;
+    public int eastings;
+    public int northings;
+    public String country;
+    public String nhs_ha;
+    public double longitude;
+    public double latitude;
+    public String european_electoral_region;
+    public String primary_care_trust;
+    public String region;
+    public String lsoa;
+    public String msoa;
+    public String incode;
+    public String outcode;
+    public String parliamentary_constituency;
+    public String admin_district;
+    public String parish;
+    public Object admin_county;
+    public String date_of_introduction;
+    public String admin_ward;
+    public Object ced;
+    public String ccg;
+    public String nuts;
+    public String pfa;
+    public Codes codes;
+}

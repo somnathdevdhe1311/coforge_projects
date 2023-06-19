@@ -1,0 +1,16 @@
+package com.santander.coforge.postcode.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="postcode_details")
+public class PostcodeDetails {
+
+	@Id
+	@GeneratedValue=
+	private int id;
+	
+}

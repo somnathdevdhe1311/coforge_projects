@@ -1,0 +1,7 @@
+package com.santander.coforge.bitcoin.customExceptions;
+
+public class CurrencyNotFoundException extends RuntimeException {
+	
+	
+
+}

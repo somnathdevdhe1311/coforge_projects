@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="productService.fetchAllProducts().size()"/>
+		<list key="findhistory">
+			<item value="productService.fetchAllProducts().size()"/>
+			<item value="roductsH2Repo.findAll().size()"/>
+		</list>
+	</section>
+</section>

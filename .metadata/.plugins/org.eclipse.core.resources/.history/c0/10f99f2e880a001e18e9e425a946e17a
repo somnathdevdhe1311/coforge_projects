@@ -1,0 +1,5 @@
+package com.santander.coforge.bitcoin.dto;
+
+public class Response {
+
+}

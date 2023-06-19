@@ -1,0 +1,48 @@
+package com.santander.coforge.postcode.service;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.santander.coforge.postcode.dto.ResponseDto;
+import com.santander.coforge.postcode.model.PostcodeDetails;
+import com.santander.coforge.postcode.repo.PostcodeRepo;
+
+@Service
+public class PostcodeService {
+
+	@Autowired
+	RestTemplate restTemplate;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PostcodeRepo postcodeRepo;
+	
+	
+	public ResponseDto getPostcodeDetails(String name,String code) {
+		
+		Object objects =restTemplate.getForObject("http://api.postcodes.io/postcodes?q="+code, Object.class);
+		
+		ResponseDto responseDto = modelMapper.map(objects, ResponseDto.class);
+		
+		PostcodeDetails postcodeDetails = new PostcodeDetails();
+		postcodeDetails.setName(name);
+		postcodeDetails.setCountry(responseDto.getResult().get(0).getCountry());
+		postcodeDetails.setEastings(responseDto.getResult().get(0).getEastings());
+		postcodeDetails.setLatitude(responseDto.getResult().get(0).getLatitude());
+		postcodeDetails.setLongitude(responseDto.getResult().get(0).getLongitude());
+		postcodeDetails.setNhs_ha(responseDto.getResult().get(0).getNhs_ha());
+		postcodeDetails.setNorthings(responseDto.getResult().get(0).getNorthings());
+		postcodeDetails.setPostcode(responseDto.getResult().get(0).getPostcode());
+		postcodeDetails.setCountry(responseDto.getResult().get(0).getQuality());
+		
+		//postcodeRepo.save(responseDto);
+		
+		return responseDto;
+		
+	}
+
+}

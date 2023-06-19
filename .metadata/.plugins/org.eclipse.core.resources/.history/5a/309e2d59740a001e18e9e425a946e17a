@@ -1,0 +1,5 @@
+package com.santander.coforge.bitcoin.service;
+
+public class BitcoinService {
+
+}

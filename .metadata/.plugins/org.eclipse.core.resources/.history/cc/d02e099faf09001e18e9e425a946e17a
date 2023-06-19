@@ -1,0 +1,74 @@
+package com.santander.coforge.postcode.service;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.santander.coforge.postcode.dto.FinalResponseDto;
+import com.santander.coforge.postcode.dto.ResponseDto;
+import com.santander.coforge.postcode.dto.SunriseSunsetResponseDto;
+import com.santander.coforge.postcode.dto.SunriseSunsetResponseDto;
+import com.santander.coforge.postcode.model.PostcodeDetails;
+import com.santander.coforge.postcode.repo.PostcodeRepo;
+
+@Service
+public class PostcodeService {
+
+	@Autowired
+	RestTemplate restTemplate;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PostcodeRepo postcodeRepo;
+	
+	
+	public ResponseDto getPostcodeDetails(String name,String code) {
+		
+		Object objects =restTemplate.getForObject("http://api.postcodes.io/postcodes?q="+code, Object.class);
+		
+		ResponseDto responseDto = modelMapper.map(objects, ResponseDto.class);
+		
+		PostcodeDetails postcodeDetails = new PostcodeDetails();
+		postcodeDetails.setName(name);
+		postcodeDetails.setCountry(responseDto.getResult().get(0).getCountry());
+		postcodeDetails.setEastings(responseDto.getResult().get(0).getEastings());
+		postcodeDetails.setLatitude(responseDto.getResult().get(0).getLatitude());
+		postcodeDetails.setLongitude(responseDto.getResult().get(0).getLongitude());
+		postcodeDetails.setNhs_ha(responseDto.getResult().get(0).getNhs_ha());
+		postcodeDetails.setNorthings(responseDto.getResult().get(0).getNorthings());
+		postcodeDetails.setPostcode(responseDto.getResult().get(0).getPostcode());
+		postcodeDetails.setQuality(responseDto.getResult().get(0).getQuality());
+		
+		Object objects1 =restTemplate.getForObject("https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lng+"&date="+date+"&formatted="+formatted, Object.class);
+		
+		SunriseSunsetResponseDto sunriseSunsetResponseDto = modelMapper.map(objects1, SunriseSunsetResponseDto.class);
+		FinalResponseDto finalResponseDto= new FinalResponseDto();
+		if(){
+			finalResponseDto.setStatus(HttpStatus.OK);
+			finalResponseDto.setMessage("Congratulations "+name+", you are allowed");
+		}else {
+			finalResponseDto.setStatus(HttpStatus.FORBIDDEN);
+			finalResponseDto.setMessage("Congratulations "+name+", you are not allowed");
+		}
+		
+		postcodeRepo.save(postcodeDetails);
+		
+		return responseDto;
+		
+	}
+
+
+	public FinalResponseDto getSuniseSunsetDetails(String lat, String lng, String date, String formatted) {
+
+		Object objects =restTemplate.getForObject("https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lng+"&date="+date+"&formatted="+formatted, Object.class);
+		
+		SunriseSunsetResponseDto sunriseSunsetResponseDto = modelMapper.map(objects, SunriseSunsetResponseDto.class);
+		FinalResponseDto finalResponseDto= new FinalResponseDto();
+		return null;
+	}
+
+}
