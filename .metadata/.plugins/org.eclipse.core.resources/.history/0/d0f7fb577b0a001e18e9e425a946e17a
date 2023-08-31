@@ -1,8 +1,0 @@
-package com.santander.coforge.bitcoin.service;
-
-import org.springframework.stereotype.Service;
-
-@Service	
-public class BitcoinService {
-
-}

@@ -1,9 +1,0 @@
-package com.santander.coforge.bitcoin.dto;
-
-public class RequestResponse {
-
-	private String currency;
-	private String amount;
-	
-	
-}

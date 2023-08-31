@@ -1,14 +1,19 @@
 package com.santander.coforge.bitcoin.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.santander.coforge.bitcoin.client.FeignClientExample;
 import com.santander.coforge.bitcoin.dto.BitcoinResponse;
 import com.santander.coforge.bitcoin.dto.Bpi;
-import com.santander.coforge.bitcoin.dto.Currencies;
 import com.santander.coforge.bitcoin.dto.RequestResponseForBitcoin;
 import com.santander.coforge.bitcoin.model.CurrencyRequest;
 import com.santander.coforge.bitcoin.repo.BitcoinRepo;
@@ -21,6 +26,8 @@ public class BitcoinService {
 	
 	@Autowired
 	FeignClientExample feignClientExample;
+	
+	Logger logger = LoggerFactory.getLogger(BitcoinService.class);
 
 	public List<CurrencyRequest> getAllCurrencies() {
 		
@@ -63,6 +70,36 @@ public class BitcoinService {
 		
 		 bitcoins = amount/rate;
 		return bitcoins;
+	}
+
+	@CachePut(key="#currencyRequest.id", value="currency")
+	public CurrencyRequest updateCurrency(CurrencyRequest currencyRequest) {
+		
+		CurrencyRequest request = bitcoinRepo.findById(currencyRequest.getId()).orElse(null);
+		request.setCode(currencyRequest.getCode());
+		request.setDescription(currencyRequest.getDescription());
+		request.setRate(currencyRequest.getRate());
+		request.setRate_float(currencyRequest.getRate_float());
+		request.setSymbol(currencyRequest.getSymbol());
+		
+		logger.info("updateCurrency method called and data fetch from db.");
+		return bitcoinRepo.save(request);
+	}
+
+	@CacheEvict(value="currency", allEntries = true)
+	public String deleteCurrency(int id) {
+		
+		 bitcoinRepo.deleteById(id);
+		 logger.info("deleteCurrency method called and data fetch from db.");
+		 return "Currency removed !! " + id;
+	}
+
+	@Cacheable(value="currency", key="#id") 
+	//unless ="#result.salary < 50000"  cache will not store the data of having more than 50000 salary
+	public CurrencyRequest getCurrencyById(int id) {
+	
+		logger.info("getCurrencyById method called and data fetch from db.");
+		return bitcoinRepo.findById(id).orElse(null);
 	}
 
 }

@@ -66,6 +66,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Hystrix_Implementation\Circuit-BreakerImpl"/>
 			<item value="D:\Interview_Preparation\ProductDemo"/>
 		</list>
 		<list key="projectNameTemplate">

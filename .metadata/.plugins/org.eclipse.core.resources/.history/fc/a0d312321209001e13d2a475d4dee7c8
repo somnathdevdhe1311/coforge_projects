@@ -1,5 +1,0 @@
-package com.santander.coforge.postcode.service;
-
-public interface PostcodeClient {
-
-}

@@ -1,10 +1,16 @@
 package com.santander.coforge.bitcoin.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,6 +72,28 @@ public class BitcoinController {
 		 }
 		
 		return savedCurrencyRequest;
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<CurrencyRequest> updateCurrency(@RequestBody CurrencyRequest currencyRequest){
+		
+		CurrencyRequest updatedCurrency = bitcoinService.updateCurrency(currencyRequest);
+		
+		return new ResponseEntity<CurrencyRequest>(updatedCurrency, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteCurrency(@PathVariable int id){
+		
+		bitcoinService.deleteCurrency(id);
+		return new ResponseEntity<String>("Currency deleted successfully.",HttpStatus.OK);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<CurrencyRequest> getCurrencyById(@PathVariable int id){
+		
+		CurrencyRequest currency = bitcoinService.getCurrencyById(id);
+		return new ResponseEntity<CurrencyRequest>(currency,HttpStatus.OK);
 	}
 	
 	@GetMapping("/calculateBitcoins")

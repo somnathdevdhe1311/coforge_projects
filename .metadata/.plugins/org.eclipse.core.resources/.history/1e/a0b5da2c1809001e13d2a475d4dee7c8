@@ -1,5 +1,0 @@
-package com.santander.coforge.postcode.repo;
-
-public interface Postcoderepo {
-
-}

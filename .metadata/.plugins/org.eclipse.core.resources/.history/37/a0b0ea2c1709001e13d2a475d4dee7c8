@@ -1,9 +1,0 @@
-package com.santander.coforge.postcode.dto;
-
-public class ResponseDto {
-
-	 public int status;
-	 public Result result;
-		
-	
-}

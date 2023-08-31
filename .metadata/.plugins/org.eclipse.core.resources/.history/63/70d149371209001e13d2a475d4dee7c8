@@ -1,8 +1,0 @@
-package com.santander.coforge.postcode.service;
-
-import org.springframework.cloud.netflix.feign.FeignClient;
-
-@FeignClient("api.postcodes.io/postcodes",name="POST-CLIENT")
-public interface PostcodeClient {
-
-}

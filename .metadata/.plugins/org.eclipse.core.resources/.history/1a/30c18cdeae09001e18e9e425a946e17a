@@ -1,5 +1,0 @@
-package com.santander.coforge.postcode.dto;
-
-public @interface CurrentTimeExample {
-
-}

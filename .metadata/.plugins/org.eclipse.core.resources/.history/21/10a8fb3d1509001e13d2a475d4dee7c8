@@ -1,9 +1,0 @@
-package com.santander.coforge.postcode.dto;
-
-public class RequestDto {
-	
-	private String postcodes;
-	
-	private String name;
-	
-}
